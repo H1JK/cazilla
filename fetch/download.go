@@ -61,12 +61,12 @@ func DownloadPEM(c *http.Client) ([]byte, error) {
 		if b := record[index["Trust Bits"]]; !strings.Contains(b, "Websites") {
 			continue // usually unused
 		}
-		builder.WriteString("\n\n")
+		builder.WriteByte('\n')
 		builder.WriteString(record[index["Common Name or Certificate Name"]])
 		builder.WriteByte('\n')
 		cert := record[index["PEM Info"]]
 		builder.WriteString(cert[1 : len(cert)-1])
+		builder.WriteByte('\n')
 	}
-	builder.WriteByte('\n')
 	return builder.Bytes(), nil
 }
