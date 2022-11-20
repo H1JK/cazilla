@@ -10,6 +10,7 @@ import (
 	"github.com/h1jk/cazilla"
 )
 
+// DownloadCSV downloads Mozilla provided Included CA Certificates (CSV with PEM of raw certificate data) and return its original CSV data.
 func DownloadCSV(c *http.Client) ([]byte, error) {
 	if c == nil {
 		c = http.DefaultClient
@@ -26,6 +27,7 @@ func DownloadCSV(c *http.Client) ([]byte, error) {
 	return respBytes, nil
 }
 
+// DownloadPEM downloads Mozilla provided Included CA Certificates (CSV with PEM of raw certificate data) and parses it, return parsed, ready-to-import PEM data.
 func DownloadPEM(c *http.Client) ([]byte, error) {
 	if c == nil {
 		c = http.DefaultClient
